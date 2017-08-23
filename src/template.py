@@ -30,6 +30,7 @@ def get_output(file_path):
     NOTE: Preserve the order of examples in the file
     """
 
+
 def get_weight_vector(feature_matrix, output, lambda_reg, p):
     """
     feature_matrix: an n x m 2-D numpy array where n is the number of samples
