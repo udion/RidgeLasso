@@ -6,8 +6,8 @@ based regularised regression and demonstrate some results
 # About Dataset being used
 ## DATASET INFORMATION:
 
-You are given the temperature, humidity in various parts of a house and the general weather conditions you are supposed to predict the energy used by the appliances in the house in Wh(Watt-hour).
-The dataset provided here is a standard dataset which was polluted with noise.
+Dataset has the temperature, humidity in various parts of a house and the general weather conditions, the goal is to predict the energy used by the appliances in the house in Wh(Watt-hour).
+The dataset used here is a standard dataset which was polluted with noise.
 
 
 ## ATTRIBUTE INFORMATION:
