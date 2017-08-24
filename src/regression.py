@@ -46,11 +46,8 @@ def get_weight_vector(feature_matrix, output, lambda_reg, p):
             using the provided function parameters such that the matrix product
             of the feature_matrix matrix with this vector will give you the
             n x 1 regression outputs
-
-    NOTE: While testing this function we will use feature_matrices not obtained
-          from the get_feature_matrix() function but you can assume that all elements
-          of this matrix will be of type float
     """
+
 
 def get_my_best_weight_vector():
     """

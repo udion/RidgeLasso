@@ -12,13 +12,15 @@ NOTE: All functions mentioned below MUST be implemented
 
 def get_feature_matrix(file_path):
     """
-    reads the csv from the file_path and returns the numpy array of data
+    file path: path to  the file assumed to be in the same format as
+               either train.csv or test_features.csv in the Kaggle competition
+
+
+    Return: A 2-D numpy array of size n x m where n is the number of examples in
+            the file and m your feature vector size
+
+    NOTE: Preserve the order of examples in the file
     """
-    df = pd.read_csv(file_path, header=0)
-    res = df.values
-    return res
-
-
 
 def get_output(file_path):
     """
@@ -29,7 +31,6 @@ def get_output(file_path):
 
     NOTE: Preserve the order of examples in the file
     """
-
 
 def get_weight_vector(feature_matrix, output, lambda_reg, p):
     """
@@ -67,3 +68,4 @@ def get_my_best_weight_vector():
           We expect this function to return fast. So you are encouraged to return a pickeled
           file after all your experiments with various values of p and lambda_reg.
     """
+
