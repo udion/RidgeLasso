@@ -49,6 +49,7 @@ def get_weight_vector(feature_matrix, output, lambda_reg, p):
     """
 
 
+
 def get_my_best_weight_vector():
     """
     Return: your best m x 1 numpy array weight vector used to predict the output for the
@@ -67,3 +68,51 @@ def get_my_best_weight_vector():
           We expect this function to return fast. So you are encouraged to return a pickeled
           file after all your experiments with various values of p and lambda_reg.
     """
+################## Some of my own functions ############################
+def get_cost(W,X,Y):
+    n = len(X[1,:])
+    m = len(Y)
+    cost = 0
+    for i in range(0,m):
+        cost += (sum(W*X[i]) - Y[i])**2
+    cost = cost/(2*n)
+
+    return cost
+
+def do_subgradient_descent(X,Y,lambda,p,alpha):
+    #both X,Y are numpy array
+    n = len(X[1,:]) #num of features
+    m = len(Y) #num of samples
+    X_mean = X.mean(axis=0)
+    Y_mean = Y.mean()
+
+    #recentering the data
+    X = X - X_mean
+    Y = Y - Y_mean
+
+    #the weight vector initialised
+    W = 100*np.random.rand(n)
+    W_ = np.zeros(n)
+
+    #my epsilon
+    eps = 0.001
+
+    step = 0
+    norm_diff_w = np.linalg.norm(W-W_)
+    while(norm_diff_w > eps):
+        step += 1
+        for k in range(0,n):
+            dJ_dwk = 0
+            for i in range(0,m):
+                dJ_dwk += (sum(W*X[i,:])-Y[i])*X[i,k]
+            if(abs(W[k])>0):
+                dJ_dwk = dJ_dwk/n + ((lambda*p*(W[k]**p))/(2*n*abs(W[k])))
+            else:
+                dJ_dwk = dJ_dwk/n + 0.00001 #a small constant
+            W_[k] = W[k] - alpha*dJ_dwk
+        temp = W
+        W = W_
+        W_ = temp
+        J = get_cost(W,X,Y)
+        norm_diff_w = np.linalg.norm(W-W_)
+        print('step={0}, J={1}, norm of diff of W={2}'.format(step,J,norm_diff_w))
